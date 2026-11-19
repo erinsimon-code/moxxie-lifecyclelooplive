@@ -1,96 +1,126 @@
 import Link from 'next/link';
-import { Flame, Trophy, CalendarCheck, Gift } from 'lucide-react';
+import type { Metadata } from 'next';
+import { UserPlus, LogIn, Bell, ShieldCheck, MessageSquareText, CalendarClock, GraduationCap, Megaphone } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { TAGLINE, MESSAGE_TYPES, DEFAULT_DESCRIPTION } from './lib/brand';
+
+export const metadata: Metadata = {
+  title: 'LifecycleLoop Live: Real-Time Employee Text Updates',
+  description: DEFAULT_DESCRIPTION,
+};
+
+const MESSAGE_TYPE_ICONS = [MessageSquareText, GraduationCap, CalendarClock, Bell, Megaphone];
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FAFAF9' }}>
+    <div className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="py-24" style={{ backgroundColor: '#FFFFFF' }}>
+      {/* Hero Section — Midnight Navy background, white H1, Hero Blue CTA */}
+      <section className="py-24 bg-navy">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-6" style={{ backgroundColor: '#1A1A1A', color: '#C79A3B' }}>
-              <Flame className="w-4 h-4" />
-              Lifestyle Loop
-            </div>
-            <h1 className="text-5xl font-extrabold sm:text-6xl md:text-7xl" style={{ color: '#111827' }}>
-              Small Habits. Real Streaks.
-              <span className="block" style={{ color: '#C79A3B' }}>Rewards You Can Redeem.</span>
+            <h1 className="text-5xl font-heading font-bold sm:text-6xl md:text-7xl text-white">
+              {TAGLINE}
             </h1>
-            <p className="mt-6 max-w-2xl mx-auto text-xl" style={{ color: '#374151' }}>
-              Lifestyle Loop helps you build the daily habits that actually stick — hydration, steps, sleep, mindfulness, and reading. Check in each day, watch your streak grow, and turn every check-in into points you can spend in the Lifestyle Loop rewards catalog.
+            <p className="mt-6 max-w-2xl mx-auto text-xl text-white/80">
+              LifecycleLoop Live keeps employees in the loop with instant updates from their employer, from onboarding and training to schedules and benefits deadlines.
             </p>
             <div className="mt-10 flex justify-center gap-4 flex-wrap">
-              <Link href="/signup" className="px-8 py-4 text-lg font-semibold rounded-lg shadow-lg transition-opacity hover:opacity-90" style={{ backgroundColor: '#C79A3B', color: '#1A1A1A' }}>
-                Get Started
-              </Link>
-              <Link href="/how-it-works" className="px-8 py-4 text-lg font-semibold rounded-lg transition-opacity hover:opacity-90 border-2" style={{ color: '#C79A3B', borderColor: '#C79A3B', backgroundColor: '#1A1A1A' }}>
-                See How It Works
+              <Link
+                href="/enroll"
+                className="px-8 py-4 text-lg font-semibold rounded-md bg-blue text-white hover:bg-blue-dark transition-colors shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+              >
+                Enroll with your company ID
               </Link>
             </div>
+            <p className="mt-4 text-sm text-white/70">
+              For current employees of participating employers only. Participation is voluntary.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20" style={{ backgroundColor: '#FAFAF9' }}>
+      {/* What you'll receive */}
+      <section className="py-20 bg-light-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold" style={{ color: '#111827' }}>The Loop That Keeps You Going</h2>
-            <p className="mt-4 text-xl" style={{ color: '#374151' }}>Four simple moves, repeated daily, that turn good intentions into lasting habits.</p>
+            <h2 className="text-4xl font-heading font-bold text-navy">What You&apos;ll Receive</h2>
+            <p className="mt-4 text-xl text-slate">Texts tied to your employment, straight from your employer.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border" style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E7EB' }}>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {MESSAGE_TYPES.map((type, i) => {
+              const Icon = MESSAGE_TYPE_ICONS[i];
+              return (
+                <div key={type.title} className="p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-border bg-white">
+                  <div className="flex justify-center mb-4">
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center bg-navy">
+                      <Icon className="w-7 h-7 text-gold" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-heading font-bold text-center mb-3 text-navy">{type.title}</h3>
+                  <p className="text-center text-slate">{type.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-heading font-bold text-navy">How It Works</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-8 rounded-xl border border-border text-center bg-light-gray">
               <div className="flex justify-center mb-4">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: '#1A1A1A' }}>
-                  <CalendarCheck className="w-7 h-7" style={{ color: '#C79A3B' }} />
+                <div className="w-14 h-14 rounded-full flex items-center justify-center bg-navy">
+                  <UserPlus className="w-7 h-7 text-gold" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-center mb-3" style={{ color: '#111827' }}>Pick Your Habits</h3>
-              <p className="text-center" style={{ color: '#374151' }}>Choose from hydration, steps, sleep, mindfulness, and reading — start with one or stack a few that fit your routine.</p>
+              <h3 className="text-xl font-heading font-bold mb-3 text-navy">1. Employer Invites</h3>
+              <p className="text-slate">A participating employer sets up LifecycleLoop Live for its team and shares a company ID.</p>
             </div>
-            <div className="p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border" style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E7EB' }}>
+            <div className="p-8 rounded-xl border border-border text-center bg-light-gray">
               <div className="flex justify-center mb-4">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: '#1A1A1A' }}>
-                  <Flame className="w-7 h-7" style={{ color: '#C79A3B' }} />
+                <div className="w-14 h-14 rounded-full flex items-center justify-center bg-navy">
+                  <LogIn className="w-7 h-7 text-gold" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-center mb-3" style={{ color: '#111827' }}>Check In Daily</h3>
-              <p className="text-center" style={{ color: '#374151' }}>A quick daily check-in confirms you showed up — that's what keeps your streak alive and your momentum building.</p>
+              <h3 className="text-xl font-heading font-bold mb-3 text-navy">2. Employee Enrolls</h3>
+              <p className="text-slate">The employee enrolls with their company ID and chooses whether to receive texts.</p>
             </div>
-            <div className="p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border" style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E7EB' }}>
+            <div className="p-8 rounded-xl border border-border text-center bg-light-gray">
               <div className="flex justify-center mb-4">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: '#1A1A1A' }}>
-                  <Trophy className="w-7 h-7" style={{ color: '#C79A3B' }} />
+                <div className="w-14 h-14 rounded-full flex items-center justify-center bg-navy">
+                  <Bell className="w-7 h-7 text-gold" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-center mb-3" style={{ color: '#111827' }}>Build Streaks & Earn Points</h3>
-              <p className="text-center" style={{ color: '#374151' }}>Every check-in earns points, and longer streaks earn more — consistency is rewarded, not just effort.</p>
-            </div>
-            <div className="p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border" style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E7EB' }}>
-              <div className="flex justify-center mb-4">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: '#1A1A1A' }}>
-                  <Gift className="w-7 h-7" style={{ color: '#C79A3B' }} />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-center mb-3" style={{ color: '#111827' }}>Redeem Rewards</h3>
-              <p className="text-center" style={{ color: '#374151' }}>Redeem your points in the Lifestyle Loop rewards catalog for things worth looking forward to.</p>
+              <h3 className="text-xl font-heading font-bold mb-3 text-navy">3. Employee Gets Updates</h3>
+              <p className="text-slate">Real-time text updates arrive at each stage of the employee lifecycle, linking back to the employee portal.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20" style={{ backgroundColor: '#FFFFFF' }}>
+      {/* Privacy promise */}
+      <section className="py-20 bg-light-gray">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6" style={{ color: '#111827' }}>Start Your Loop Today</h2>
-          <p className="text-xl mb-10" style={{ color: '#374151' }}>Pick a habit, check in tomorrow, and see how far a streak can take you.</p>
-          <Link href="/signup" className="px-10 py-5 text-xl font-semibold rounded-lg shadow-lg transition-opacity hover:opacity-90" style={{ backgroundColor: '#C79A3B', color: '#1A1A1A' }}>
-            Get Started
-          </Link>
+          <div className="flex justify-center mb-6">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center bg-emerald">
+              <ShieldCheck className="w-8 h-8 text-white" />
+            </div>
+          </div>
+          <h2 className="text-4xl font-heading font-bold mb-6 text-navy">Our Privacy Promise</h2>
+          <p className="text-lg mb-4 text-slate">
+            Phone numbers and opt-in consent are never sold, rented or shared with third parties.
+          </p>
+          <p className="text-lg text-slate">
+            Texts never include pay, SSNs, account numbers or benefit balances. They only point to the portal.
+          </p>
         </div>
       </section>
 

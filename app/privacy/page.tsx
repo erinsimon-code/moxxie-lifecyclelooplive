@@ -1,55 +1,89 @@
+import type { Metadata } from 'next';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import {
+  DOMAIN,
+  LEGAL_NAME,
+  ADDRESS,
+  EMAIL,
+  PHONE,
+  PHONE_DISPLAY,
+  OPERATOR_LINE,
+  MESSAGE_TYPES,
+  SAMPLE_MESSAGES,
+  PRIVACY_NO_SHARING_CLAUSE,
+  DEFAULT_DESCRIPTION,
+} from '../lib/brand';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | LifecycleLoop Live',
+  description: DEFAULT_DESCRIPTION,
+};
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FAFAF9' }}>
+    <div className="min-h-screen bg-white">
       <Navbar />
-      <section className="py-12" style={{ backgroundColor: '#FFFFFF' }}>
+      <section className="py-12 bg-navy">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-extrabold mb-4" style={{ color: '#111827' }}>Privacy Policy</h1>
-          <p className="text-lg" style={{ color: '#374151' }}>Effective Date: November 2, 2026</p>
+          <h1 className="text-4xl font-heading font-bold mb-4 text-white">Privacy Policy</h1>
+          <p className="text-lg text-white/80">Effective Date: November 19, 2026</p>
         </div>
       </section>
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="prose prose-lg max-w-none">
-          <h2 className="text-2xl font-bold mt-8 mb-4" style={{ color: '#111827' }}>1. Overview</h2>
-          <p className="mb-6" style={{ color: '#374151' }}>
-            Lifecycle Loop LLC operates Lifestyle Loop. We take your privacy seriously, and this policy lays out how your information gets collected, used, disclosed, and protected whenever you visit www.livelifestyleloop.com or use our service. Using the service means you're agreeing to how we handle data as described here.
+          <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">1. Overview</h2>
+          <p className="mb-6 text-slate">
+            {OPERATOR_LINE}. LifecycleLoop Live is an internal employee communication program. Employers use it to send real-time text updates to their own enrolled employees at each stage of the employee lifecycle: onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, and workplace announcements. Messages go only to current employees of a participating employer who enroll with their company ID. The program is never open to the general public.
           </p>
-          <h2 className="text-2xl font-bold mt-8 mb-4" style={{ color: '#111827' }}>2. What Information We Gather</h2>
-          <p className="mb-4" style={{ color: '#374151' }}>Signing up for or using the service may involve us gathering:</p>
-          <ul className="list-disc pl-6 mb-6 space-y-2" style={{ color: '#374151' }}>
-            <li>Your name along with contact details like email and phone number</li>
-            <li>The habits you choose to track, such as hydration, steps, sleep, mindfulness, or reading</li>
-            <li>Your daily check-in history, streak activity, points balance, and reward redemptions</li>
-            <li>Your chosen SMS opt-in preferences (account notification texts and/or promotional texts)</li>
-          </ul>
-          <h2 className="text-2xl font-bold mt-8 mb-4" style={{ color: '#111827' }}>3. Text Messaging</h2>
-          <p className="mb-4" style={{ color: '#374151' }}>
-            Should you opt in to text messages from Lifestyle Loop, these conditions apply:
+          <p className="mb-6 text-slate">
+            This policy explains how information is collected, used, disclosed, and protected when your employer enrolls you, or you enroll yourself with a company ID, at {DOMAIN}.
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2" style={{ color: '#374151' }}>
-            <li>Depending on what you opt into, you could get account notification texts (check-in reminders, streak updates, and points confirmations), promotional texts (new habit challenges and new rewards), or both.</li>
-            <li>Standard message and data charges may apply, and how often you're messaged can vary.</li>
-            <li>Want out? Text STOP to any message. Need assistance? Text HELP or reach support@livelifestyleloop.com.</li>
-            <li><strong>Your mobile details are never passed along to third parties or affiliates for promotional purposes.</strong></li>
-            <li>Signing up for texts is entirely optional, isn't required to use the service, and does not earn you any points.</li>
+
+          <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">2. Information We Collect</h2>
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
+            <li>Your name, mobile number, and email address provided at enrollment</li>
+            <li>Your employer&apos;s company ID and your employment status with that employer</li>
+            <li>Your message preferences and opt-in/opt-out status</li>
           </ul>
-          <h2 className="text-2xl font-bold mt-8 mb-4" style={{ color: '#111827' }}>4. How Your Information Gets Used</h2>
-          <ul className="list-disc pl-6 mb-6 space-y-2" style={{ color: '#374151' }}>
-            <li>Running and improving our habit-tracking and rewards platform</li>
-            <li>Tracking and managing your habits, check-ins, streaks, points, and rewards catalog redemptions</li>
-            <li>Responding to your account questions or general inquiries</li>
-            <li>Delivering the text messages you've chosen to receive</li>
-            <li>Meeting any applicable legal requirements</li>
+
+          <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">3. Text Messaging</h2>
+          <p className="mb-4 text-slate">If you opt in to text messages, these conditions apply:</p>
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
+            {MESSAGE_TYPES.map((type) => (
+              <li key={type.title}><strong className="text-navy">{type.title}</strong> — {type.description}</li>
+            ))}
+            <li>Message frequency varies. Msg &amp; data rates may apply.</li>
+            <li>Reply HELP for help, STOP to opt out.</li>
+            <li>Consent is not a condition of employment.</li>
           </ul>
-          <h2 className="text-2xl font-bold mt-8 mb-4" style={{ color: '#111827' }}>5. Reach Out to Us</h2>
-          <p className="mb-6" style={{ color: '#374151' }}>
-            Got questions about this policy? Here's how to reach us:<br />
-            Lifestyle Loop, a service of Lifecycle Loop LLC<br />
-            3 Germay Dr, Unit 4-3226, Wilmington, DE 19804<br />
-            Email: <a href="mailto:support@livelifestyleloop.com" style={{ color: '#C79A3B' }}>support@livelifestyleloop.com</a>
+          <p className="mb-6 text-slate">
+            <strong className="text-navy">{PRIVACY_NO_SHARING_CLAUSE}</strong>
+          </p>
+
+          <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">4. How Information Is Used</h2>
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
+            <li>Operating and improving the employee communication program</li>
+            <li>Delivering onboarding, training, schedule, benefits, and announcement updates</li>
+            <li>Verifying enrollment eligibility with the participating employer</li>
+            <li>Responding to support requests</li>
+            <li>Meeting applicable legal requirements</li>
+          </ul>
+
+          <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">5. Sample Messages</h2>
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
+            {SAMPLE_MESSAGES.map((message) => (
+              <li key={message}>{message}</li>
+            ))}
+          </ul>
+
+          <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">6. Contact Us</h2>
+          <p className="mb-6 text-slate">
+            Questions about this policy? Here&apos;s how to reach us:<br />
+            {LEGAL_NAME}<br />
+            {ADDRESS}<br />
+            Email: <a href={`mailto:${EMAIL}`} className="text-blue hover:text-blue-dark">{EMAIL}</a><br />
+            Phone: <a href={`tel:${PHONE}`} className="text-blue hover:text-blue-dark">{PHONE_DISPLAY}</a>
           </p>
         </div>
       </section>

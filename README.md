@@ -1,5 +1,5 @@
-# Lifestyle Loop
+# LifecycleLoop Live
 
-Marketing microsite for Lifestyle Loop, a habit-tracking rewards app. Members pick habits — hydration, steps, sleep, mindfulness, and reading — check in daily, build streaks, earn points, and redeem them in the Lifestyle Loop rewards catalog.
+Internal employee communication program. Employers use LifecycleLoop Live to send real-time text updates to their own enrolled employees at each stage of the employee lifecycle: onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, and workplace announcements. Messages go only to current employees of a participating employer who enroll with their company ID.
 
-Live at: https://www.livelifestyleloop.com
+Live at: https://lifecyclelooplive.com

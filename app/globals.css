@@ -1,31 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAFAF9;
-  --foreground: #111827;
-  --primary: #1A1A1A;
-  --secondary: #374151;
-  --accent: #C79A3B;
-  --surface: #FFFFFF;
-  --muted: #374151;
-  --border: #E5E7EB;
+  /* Primary */
+  --navy: #0F172A;      /* Midnight Navy — headings, header/footer bg, body text on light */
+  --blue: #2563EB;      /* Hero Blue — primary buttons, links, key accents */
+  --blue-dark: #1D4ED8; /* Darker blue for hover states */
+
+  /* Secondary */
+  --emerald: #10B981;   /* Emerald Success — success states, checkmarks */
+  --gold: #F59E0B;      /* Soft Gold — small highlights only (icons/badges), never body text */
+
+  /* Neutrals */
+  --white: #FFFFFF;     /* page background */
+  --light-gray: #F8FAFC; /* alternating sections, cards */
+  --slate: #64748B;     /* secondary text, captions, disclosure text */
+
+  --background: var(--white);
+  --foreground: var(--navy);
+  --border: #E2E8F0;
 }
 
 @theme inline {
+  --color-navy: var(--navy);
+  --color-blue: var(--blue);
+  --color-blue-dark: var(--blue-dark);
+  --color-emerald: var(--emerald);
+  --color-gold: var(--gold);
+  --color-white: var(--white);
+  --color-light-gray: var(--light-gray);
+  --color-slate: var(--slate);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
-  --color-surface: var(--surface);
-  --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-manrope);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
+  font-weight: 700;
 }

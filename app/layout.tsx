@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
+import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "./lib/brand";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
+  weight: ["700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Lifestyle Loop | Build Habits, Keep Streaks, Earn Rewards",
-  description: "Lifestyle Loop helps you build better daily habits — hydration, steps, sleep, mindfulness, and reading — with daily check-ins, streaks, and points you redeem in the Lifestyle Loop rewards catalog.",
+  title: DEFAULT_TITLE,
+  description: DEFAULT_DESCRIPTION,
 };
 
 export default function RootLayout({
@@ -24,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${manrope.variable} ${inter.variable} antialiased`}>
         {children}
       </body>
     </html>
