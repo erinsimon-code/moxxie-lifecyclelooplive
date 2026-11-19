@@ -21,7 +21,7 @@ export const TOLL_FREE_NOTE = "Messages are sent from a toll-free number.";
 export const TAGLINE = "Real-time updates for every step of your work journey.";
 
 export const POSITIONING_PARAGRAPH =
-  "LifecycleLoop Live is an internal employee communication program. Employers use it to send real-time text updates to their own enrolled employees at each stage of the employee lifecycle: onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, and workplace announcements. Messages go only to current employees of a participating employer who enroll with their company ID. The program is never open to the general public.";
+  "LifecycleLoop Live is an internal employee communication program. Employers use it to send real-time text updates to their own enrolled employees at each stage of the employee lifecycle: onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, workplace announcements, and one-time verification codes to confirm your mobile number. Messages go only to current employees of a participating employer who enroll with their company ID. The program is never open to the general public.";
 
 export const POSITIONING_BULLETS = [
   "Voluntary. Joining is never a condition of employment, and employees can opt out any time.",
@@ -78,7 +78,7 @@ export const SAMPLE_MESSAGES: string[] = [
 ];
 
 export const CONSENT_LABEL_PREFIX =
-  "I agree to receive recurring text messages from LifecycleLoop Live about my employment, including onboarding steps, training reminders, schedule changes, benefits deadlines and workplace announcements, at the number provided. Consent is not a condition of employment. Message frequency varies. Msg & data rates may apply. Reply HELP for help, STOP to opt out. See our";
+  "I agree to receive recurring text messages from LifecycleLoop Live about my employment, including onboarding steps, training reminders, schedule changes, benefits deadlines, workplace announcements and one-time verification codes, at the number provided. Consent is not a condition of employment. Message frequency varies. Msg & data rates may apply. Reply HELP for help, STOP to opt out. See our";
 
 export const STOP_KEYWORDS = ["STOP", "END", "CANCEL", "UNSUBSCRIBE", "QUIT"];
 

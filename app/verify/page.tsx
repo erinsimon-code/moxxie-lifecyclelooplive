@@ -48,14 +48,23 @@ export default function VerifyPage() {
   const [code, setCode] = useState('');
   const [codeError, setCodeError] = useState('');
   const [resendSeconds, setResendSeconds] = useState(0);
-  const [resendNotice, setResendNotice] = useState('');
+  const [justResent, setJustResent] = useState(false);
 
   const phoneInputRef = useRef<HTMLInputElement>(null);
   const codeInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (resendSeconds <= 0) return;
-    const timer = setTimeout(() => setResendSeconds((s) => s - 1), 1000);
+    // Keep "A new code is on its way." visible for the whole countdown;
+    // hide it only once the countdown reaches zero. The state update happens
+    // inside the timer callback, not synchronously in the effect body.
+    const timer = setTimeout(() => {
+      setResendSeconds((s) => {
+        const next = s - 1;
+        if (next <= 0) setJustResent(false);
+        return next;
+      });
+    }, 1000);
     return () => clearTimeout(timer);
   }, [resendSeconds]);
 
@@ -117,9 +126,8 @@ export default function VerifyPage() {
   const handleResend = () => {
     if (resendSeconds > 0) return;
     sendCode(phoneDigits);
+    setJustResent(true);
     setResendSeconds(VERIFY_RESEND_SECONDS);
-    setResendNotice('A new code is on its way.');
-    setTimeout(() => setResendNotice(''), 4000);
   };
 
   const handleUseDifferentNumber = () => {
@@ -127,7 +135,7 @@ export default function VerifyPage() {
     setCode('');
     setCodeError('');
     setResendSeconds(0);
-    setResendNotice('');
+    setJustResent(false);
   };
 
   return (
@@ -223,8 +231,8 @@ export default function VerifyPage() {
                   Use a different number
                 </button>
               </div>
-              {resendNotice && (
-                <p role="status" className="mt-3 text-sm text-slate">{resendNotice}</p>
+              {justResent && (
+                <p role="status" className="mt-3 text-sm text-slate">A new code is on its way.</p>
               )}
             </>
           )}

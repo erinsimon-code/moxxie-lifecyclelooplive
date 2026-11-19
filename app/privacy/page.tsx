@@ -34,7 +34,7 @@ export default function PrivacyPage() {
         <div className="prose prose-lg max-w-none">
           <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">1. Overview</h2>
           <p className="mb-6 text-slate">
-            {OPERATOR_LINE}. LifecycleLoop Live is an internal employee communication program. Employers use it to send real-time text updates to their own enrolled employees at each stage of the employee lifecycle: onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, and workplace announcements. Messages go only to current employees of a participating employer who enroll with their company ID. The program is never open to the general public.
+            {OPERATOR_LINE}. LifecycleLoop Live is an internal employee communication program. Employers use it to send real-time text updates to their own enrolled employees at each stage of the employee lifecycle: onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, workplace announcements, and one-time verification codes to confirm your mobile number. Messages go only to current employees of a participating employer who enroll with their company ID. The program is never open to the general public.
           </p>
           <p className="mb-6 text-slate">
             This policy explains how information is collected, used, disclosed, and protected when your employer enrolls you, or you enroll yourself with a company ID, at {DOMAIN}.

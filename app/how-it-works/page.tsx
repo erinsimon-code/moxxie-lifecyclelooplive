@@ -41,7 +41,7 @@ export default function HowItWorksPage() {
             </div>
             <div>
               <h3 className="text-2xl font-heading font-bold mb-2 text-navy">2. Get Updates at Each Stage</h3>
-              <p className="text-slate">Receive real-time texts for onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, and workplace announcements.</p>
+              <p className="text-slate">Receive real-time texts for onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, workplace announcements, and one-time verification codes to confirm your mobile number.</p>
             </div>
           </div>
           <div className="flex gap-6 items-start rounded-2xl p-8 border border-border bg-white">
@@ -75,7 +75,7 @@ export default function HowItWorksPage() {
             </div>
             <div>
               <h3 className="text-2xl font-heading font-bold mb-2 text-navy">2. Choose Which Updates Send</h3>
-              <p className="text-slate">The employer chooses which update types to send: onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, and workplace announcements.</p>
+              <p className="text-slate">The employer chooses which update types to send: onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, workplace announcements, and one-time verification codes to confirm your mobile number.</p>
             </div>
           </div>
           <div className="flex gap-6 items-start rounded-2xl p-8 border border-border bg-white">
