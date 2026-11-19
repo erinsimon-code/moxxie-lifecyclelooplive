@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { UserPlus, LogIn, Bell, ShieldCheck, MessageSquareText, CalendarClock, GraduationCap, Megaphone } from 'lucide-react';
+import { UserPlus, LogIn, Bell, ShieldCheck, MessageSquareText, CalendarClock, GraduationCap, Megaphone, KeyRound } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { TAGLINE, MESSAGE_TYPES, DEFAULT_DESCRIPTION } from './lib/brand';
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
 };
 
-const MESSAGE_TYPE_ICONS = [MessageSquareText, GraduationCap, CalendarClock, Bell, Megaphone];
+const MESSAGE_TYPE_ICONS = [MessageSquareText, GraduationCap, CalendarClock, Bell, Megaphone, KeyRound];
 
 export default function HomePage() {
   return (

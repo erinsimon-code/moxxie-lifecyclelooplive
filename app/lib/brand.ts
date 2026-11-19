@@ -63,6 +63,10 @@ export const MESSAGE_TYPES: MessageType[] = [
     title: "Workplace announcements",
     description: "Important updates from your employer that apply to your workplace.",
   },
+  {
+    title: "Verification codes",
+    description: "One-time verification codes to confirm your mobile number.",
+  },
 ];
 
 export const SAMPLE_MESSAGES: string[] = [
@@ -70,6 +74,7 @@ export const SAMPLE_MESSAGES: string[] = [
   "LifecycleLoop Live: Reminder: Safety training is tomorrow 11/20 at 9:00 AM. Details at lifecyclelooplive.com/portal. Reply STOP to opt out.",
   "LifecycleLoop Live: Your shift on Sat 11/22 has changed to 10:00 AM-6:00 PM. View your schedule at lifecyclelooplive.com/portal. Reply STOP to opt out.",
   "LifecycleLoop Live: Benefits open enrollment closes 12/5. Review your options at lifecyclelooplive.com/portal. Reply STOP to opt out.",
+  "LifecycleLoop Live: Your verification code is 482913. Enter it at lifecyclelooplive.com/verify to confirm your number. Reply HELP for help, STOP to opt out.",
 ];
 
 export const CONSENT_LABEL_PREFIX =
@@ -86,3 +91,13 @@ export const CONSENT_MOBILE_INVALID_ERROR =
 export const DEFAULT_TITLE = "LifecycleLoop Live: Employee Updates";
 export const DEFAULT_DESCRIPTION =
   "LifecycleLoop Live sends real-time text updates to enrolled employees about onboarding, training, schedules and benefits deadlines.";
+
+// --- /verify copy ---------------------------------------------------------
+export const VERIFY_TITLE = "Verify Your Number | LifecycleLoop Live";
+
+export const VERIFY_PHONE_EMPTY_ERROR = "Please enter your mobile number.";
+export const VERIFY_PHONE_INVALID_ERROR = "Please enter a valid 10-digit mobile number.";
+export const VERIFY_CODE_EMPTY_ERROR = "Please enter the 6-digit code we texted you.";
+export const VERIFY_CODE_INVALID_ERROR = "The code must be 6 digits.";
+
+export const VERIFY_RESEND_SECONDS = 30;

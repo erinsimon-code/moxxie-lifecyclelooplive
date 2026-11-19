@@ -46,3 +46,16 @@ h1, h2, h3, h4 {
   font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
   font-weight: 700;
 }
+
+/* Accent bar for the /verify card — uses existing theme tokens only. */
+.verify-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.375rem; /* 6px */
+  background: var(--blue);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}

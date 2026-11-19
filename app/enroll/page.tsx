@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import { Building2, Mail, Phone, User, CheckCircle2 } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -24,6 +25,7 @@ type FormData = {
 };
 
 export default function EnrollPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
     companyId: '',
     firstName: '',
@@ -68,9 +70,19 @@ export default function EnrollPage() {
       }
     }
 
-    // With the box unchecked, the form submits with only a Company ID.
     setMobileError('');
     setIsSubmitting(true);
+
+    if (consent) {
+      // Box checked + valid phone → send to /verify to confirm the number.
+      // The phone number is kept in component state only, never in the URL.
+      setTimeout(() => {
+        router.push('/verify');
+      }, 800);
+      return;
+    }
+
+    // Box unchecked → the form submits with only a Company ID, as before.
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
