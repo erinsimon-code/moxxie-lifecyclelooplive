@@ -1,16 +1,31 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { UserPlus, LogIn, Bell, ShieldCheck, MessageSquareText, CalendarClock, GraduationCap, Megaphone, KeyRound } from 'lucide-react';
+import {
+  UserPlus,
+  LogIn,
+  Bell,
+  ShieldCheck,
+  MessageSquareText,
+  CalendarClock,
+  GraduationCap,
+  Megaphone,
+  KeyRound,
+  Gift,
+  PartyPopper,
+  HeartHandshake,
+  Sparkles,
+} from 'lucide-react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { TAGLINE, MESSAGE_TYPES, DEFAULT_DESCRIPTION } from './lib/brand';
+import { TAGLINE, ACCOUNT_MESSAGE_TYPES, PROMOTIONAL_MESSAGE_TYPES, DEFAULT_DESCRIPTION } from './lib/brand';
 
 export const metadata: Metadata = {
   title: 'LifecycleLoop Live: Real-Time Employee Text Updates',
   description: DEFAULT_DESCRIPTION,
 };
 
-const MESSAGE_TYPE_ICONS = [MessageSquareText, GraduationCap, CalendarClock, Bell, Megaphone, KeyRound];
+const ACCOUNT_ICONS = [MessageSquareText, GraduationCap, CalendarClock, Bell, Megaphone, KeyRound];
+const PROMOTIONAL_ICONS = [Gift, PartyPopper, HeartHandshake, Sparkles];
 
 export default function HomePage() {
   return (
@@ -49,9 +64,11 @@ export default function HomePage() {
             <h2 className="text-4xl font-heading font-bold text-navy">What You&apos;ll Receive</h2>
             <p className="mt-4 text-xl text-slate">Texts tied to your employment, straight from your employer.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {MESSAGE_TYPES.map((type, i) => {
-              const Icon = MESSAGE_TYPE_ICONS[i];
+
+          <h3 className="text-2xl font-heading font-bold text-navy mb-8 text-center">Account Notifications</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {ACCOUNT_MESSAGE_TYPES.map((type, i) => {
+              const Icon = ACCOUNT_ICONS[i];
               return (
                 <div key={type.title} className="p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-border bg-white">
                   <div className="flex justify-center mb-4">
@@ -59,7 +76,25 @@ export default function HomePage() {
                       <Icon className="w-7 h-7 text-gold" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-heading font-bold text-center mb-3 text-navy">{type.title}</h3>
+                  <h4 className="text-xl font-heading font-bold text-center mb-3 text-navy">{type.title}</h4>
+                  <p className="text-center text-slate">{type.description}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          <h3 className="text-2xl font-heading font-bold text-navy mb-8 text-center">Promotional Messages (optional)</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {PROMOTIONAL_MESSAGE_TYPES.map((type, i) => {
+              const Icon = PROMOTIONAL_ICONS[i];
+              return (
+                <div key={type.title} className="p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-border bg-white">
+                  <div className="flex justify-center mb-4">
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center bg-navy">
+                      <Icon className="w-7 h-7 text-gold" />
+                    </div>
+                  </div>
+                  <h4 className="text-xl font-heading font-bold text-center mb-3 text-navy">{type.title}</h4>
                   <p className="text-center text-slate">{type.description}</p>
                 </div>
               );

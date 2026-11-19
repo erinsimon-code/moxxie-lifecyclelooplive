@@ -8,8 +8,9 @@ import {
   EMAIL,
   PHONE,
   PHONE_DISPLAY,
-  OPERATOR_LINE,
-  MESSAGE_TYPES,
+  POSITIONING_PARAGRAPH,
+  ACCOUNT_MESSAGE_TYPES,
+  PROMOTIONAL_MESSAGE_TYPES,
   SAMPLE_MESSAGES,
   PRIVACY_NO_SHARING_CLAUSE,
   DEFAULT_DESCRIPTION,
@@ -33,9 +34,7 @@ export default function PrivacyPage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="prose prose-lg max-w-none">
           <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">1. Overview</h2>
-          <p className="mb-6 text-slate">
-            {OPERATOR_LINE}. LifecycleLoop Live is an internal employee communication program. Employers use it to send real-time text updates to their own enrolled employees at each stage of the employee lifecycle: onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, workplace announcements, and one-time verification codes to confirm your mobile number. Messages go only to current employees of a participating employer who enroll with their company ID. The program is never open to the general public.
-          </p>
+          <p className="mb-6 text-slate">{POSITIONING_PARAGRAPH}</p>
           <p className="mb-6 text-slate">
             This policy explains how information is collected, used, disclosed, and protected when your employer enrolls you, or you enroll yourself with a company ID, at {DOMAIN}.
           </p>
@@ -48,11 +47,19 @@ export default function PrivacyPage() {
           </ul>
 
           <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">3. Text Messaging</h2>
-          <p className="mb-4 text-slate">If you opt in to text messages, these conditions apply:</p>
+          <p className="mb-4 text-slate">If you opt in to account notification texts, these may include:</p>
           <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
-            {MESSAGE_TYPES.map((type) => (
+            {ACCOUNT_MESSAGE_TYPES.map((type) => (
               <li key={type.title}><strong className="text-navy">{type.title}</strong> — {type.description}</li>
             ))}
+          </ul>
+          <p className="mb-4 text-slate">If you also opt in to promotional texts, these may include:</p>
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
+            {PROMOTIONAL_MESSAGE_TYPES.map((type) => (
+              <li key={type.title}><strong className="text-navy">{type.title}</strong> — {type.description}</li>
+            ))}
+          </ul>
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
             <li>Message frequency varies. Msg &amp; data rates may apply.</li>
             <li>Reply HELP for help, STOP to opt out.</li>
             <li>Consent is not a condition of employment.</li>

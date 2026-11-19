@@ -7,7 +7,8 @@ import { Building2, Mail, Phone, User, CheckCircle2 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import {
-  CONSENT_LABEL_PREFIX,
+  ACCOUNT_CONSENT_LABEL,
+  PROMOTIONAL_CONSENT_LABEL,
   CONSENT_MOBILE_REQUIRED_ERROR,
   CONSENT_MOBILE_INVALID_ERROR,
   SAMPLE_MESSAGES,
@@ -33,7 +34,8 @@ export default function EnrollPage() {
     email: '',
     mobile: '',
   });
-  const [consent, setConsent] = useState(false);
+  const [accountConsent, setAccountConsent] = useState(false);
+  const [promoConsent, setPromoConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [mobileError, setMobileError] = useState('');
@@ -43,12 +45,19 @@ export default function EnrollPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleConsentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // The box itself stays freely togglable — no required attribute, and
-    // unchecking always clears any pending mobile-number error. Mobile
-    // number validity is only enforced on submit, in handleSubmit below.
-    setConsent(e.target.checked);
-    if (!e.target.checked) {
+  // Either box stays freely togglable — no required attribute, and
+  // unchecking both always clears any pending mobile-number error. Mobile
+  // number validity is only enforced on submit, in handleSubmit below.
+  const handleAccountConsentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAccountConsent(e.target.checked);
+    if (!e.target.checked && !promoConsent) {
+      setMobileError('');
+    }
+  };
+
+  const handlePromoConsentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPromoConsent(e.target.checked);
+    if (!e.target.checked && !accountConsent) {
       setMobileError('');
     }
   };
@@ -56,7 +65,9 @@ export default function EnrollPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (consent) {
+    const anyConsent = accountConsent || promoConsent;
+
+    if (anyConsent) {
       const digits = formData.mobile.replace(/\D/g, '');
       if (formData.mobile.trim() === '') {
         setMobileError(CONSENT_MOBILE_REQUIRED_ERROR);
@@ -73,16 +84,17 @@ export default function EnrollPage() {
     setMobileError('');
     setIsSubmitting(true);
 
-    if (consent) {
-      // Box checked + valid phone → send to /verify to confirm the number.
-      // The phone number is kept in component state only, never in the URL.
+    if (anyConsent) {
+      // Either box checked + valid phone → send to /verify to confirm the
+      // number. The phone number is kept in component state only, never in
+      // the URL.
       setTimeout(() => {
         router.push('/verify');
       }, 800);
       return;
     }
 
-    // Box unchecked → the form submits with only a Company ID, as before.
+    // Neither box checked → the form submits with only a Company ID, as before.
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
@@ -180,21 +192,38 @@ export default function EnrollPage() {
                 </div>
               </div>
 
-              {/* SMS Consent — optional, unchecked by default */}
-              <div className="flex items-start gap-3 pt-2">
-                <input
-                  type="checkbox"
-                  id="smsConsent"
-                  checked={consent}
-                  onChange={handleConsentChange}
-                  className="mt-1 w-4 h-4 rounded accent-blue"
-                />
-                <label htmlFor="smsConsent" className="text-sm leading-relaxed text-slate">
-                  {CONSENT_LABEL_PREFIX}{' '}
+              {/* SMS Consent — two separate boxes, both optional and unchecked by default */}
+              <div className="space-y-4 pt-2">
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="accountConsent"
+                    checked={accountConsent}
+                    onChange={handleAccountConsentChange}
+                    className="mt-1 w-4 h-4 rounded accent-blue"
+                  />
+                  <label htmlFor="accountConsent" className="text-sm leading-relaxed text-slate">
+                    {ACCOUNT_CONSENT_LABEL}
+                  </label>
+                </div>
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="promoConsent"
+                    checked={promoConsent}
+                    onChange={handlePromoConsentChange}
+                    className="mt-1 w-4 h-4 rounded accent-blue"
+                  />
+                  <label htmlFor="promoConsent" className="text-sm leading-relaxed text-slate">
+                    {PROMOTIONAL_CONSENT_LABEL}
+                  </label>
+                </div>
+                <p className="text-sm text-slate">
+                  See our{' '}
                   <a href="/sms-terms" className="text-blue underline hover:text-blue-dark">SMS Terms</a>
                   {' '}and{' '}
                   <a href="/privacy" className="text-blue underline hover:text-blue-dark">Privacy Policy</a>.
-                </label>
+                </p>
               </div>
 
               <button

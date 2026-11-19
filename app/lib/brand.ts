@@ -21,11 +21,14 @@ export const TOLL_FREE_NOTE = "Messages are sent from a toll-free number.";
 export const TAGLINE = "Real-time updates for every step of your work journey.";
 
 export const POSITIONING_PARAGRAPH =
-  "LifecycleLoop Live is an internal employee communication program. Employers use it to send real-time text updates to their own enrolled employees at each stage of the employee lifecycle: onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, workplace announcements, and one-time verification codes to confirm your mobile number. Messages go only to current employees of a participating employer who enroll with their company ID. The program is never open to the general public.";
+  "LifecycleLoop Live is an internal employee communication program operated by LifeCycleLoop LLC. Current employees of participating employers enroll using a company ID and can choose to receive account notification texts (onboarding steps, training reminders, schedule and shift changes, benefits enrollment deadlines, workplace announcements and one-time verification codes) and/or promotional texts (employee perks and discounts offered by their employer, company events, wellness and recognition programs, and new LifecycleLoop Live features). Promotional messages come only from the employer or LifecycleLoop Live and never include third-party offers. Participation is voluntary and not a condition of employment.";
+
+export const PROMOTIONAL_DISCLOSURE =
+  "Promotional messages are optional, come only from your employer or LifecycleLoop Live, and never include third-party offers.";
 
 export const POSITIONING_BULLETS = [
   "Voluntary. Joining is never a condition of employment, and employees can opt out any time.",
-  "No marketing, promotions or third-party offers. Not used for recruiting or job seekers.",
+  "Promotional messages are optional, come only from your employer or LifecycleLoop Live, and never include third-party offers.",
   "Texts never include pay, SSNs, account numbers or benefit balances. They only point to the portal.",
   "Phone numbers and opt-in consent are never sold, rented or shared with third parties.",
 ];
@@ -42,7 +45,9 @@ export type MessageType = {
   description: string;
 };
 
-export const MESSAGE_TYPES: MessageType[] = [
+// Account notifications — 6 items, used word for word everywhere message
+// types are listed.
+export const ACCOUNT_MESSAGE_TYPES: MessageType[] = [
   {
     title: "Onboarding steps",
     description: "Guidance on what to complete next when you're new to the team.",
@@ -69,24 +74,58 @@ export const MESSAGE_TYPES: MessageType[] = [
   },
 ];
 
+// Promotional messages — 4 items, optional and separate from account
+// notifications.
+export const PROMOTIONAL_MESSAGE_TYPES: MessageType[] = [
+  {
+    title: "Employee perks and discounts",
+    description: "Perks and discounts offered by your employer.",
+  },
+  {
+    title: "Company events",
+    description: "Invitations and details for company events.",
+  },
+  {
+    title: "Wellness and recognition programs",
+    description: "Updates on wellness challenges and employee recognition programs.",
+  },
+  {
+    title: "New LifecycleLoop Live features",
+    description: "Announcements about new features added to LifecycleLoop Live.",
+  },
+];
+
+// Combined list — used wherever the site needs every message type together
+// (e.g. /sms-terms, /privacy message-type sections).
+export const MESSAGE_TYPES: MessageType[] = [
+  ...ACCOUNT_MESSAGE_TYPES,
+  ...PROMOTIONAL_MESSAGE_TYPES,
+];
+
 export const SAMPLE_MESSAGES: string[] = [
   "LifecycleLoop Live: Welcome aboard! Your next onboarding step is ready at lifecyclelooplive.com/portal. Reply HELP for help, STOP to opt out.",
   "LifecycleLoop Live: Reminder: Safety training is tomorrow 11/20 at 9:00 AM. Details at lifecyclelooplive.com/portal. Reply STOP to opt out.",
   "LifecycleLoop Live: Your shift on Sat 11/22 has changed to 10:00 AM-6:00 PM. View your schedule at lifecyclelooplive.com/portal. Reply STOP to opt out.",
-  "LifecycleLoop Live: Benefits open enrollment closes 12/5. Review your options at lifecyclelooplive.com/portal. Reply STOP to opt out.",
   "LifecycleLoop Live: Your verification code is 482913. Enter it at lifecyclelooplive.com/verify to confirm your number. Reply HELP for help, STOP to opt out.",
+  "LifecycleLoop Live: New employee perk! Your employer now offers a discount at local gyms. View details at lifecyclelooplive.com/portal. Reply STOP to opt out.",
+  "LifecycleLoop Live: You're invited! Join us for the company wellness fair on 12/10. Details at lifecyclelooplive.com/portal. Reply STOP to opt out.",
 ];
 
-export const CONSENT_LABEL_PREFIX =
-  "I agree to receive recurring text messages from LifecycleLoop Live about my employment, including onboarding steps, training reminders, schedule changes, benefits deadlines, workplace announcements and one-time verification codes, at the number provided. Consent is not a condition of employment. Message frequency varies. Msg & data rates may apply. Reply HELP for help, STOP to opt out. See our";
+// Box 1 — account notifications consent (optional, unchecked by default).
+export const ACCOUNT_CONSENT_LABEL =
+  "Account notifications: I agree to receive recurring text messages from LifecycleLoop Live about my employment, including onboarding steps, training reminders, schedule changes, benefits deadlines, workplace announcements and one-time verification codes, at the number provided. Consent is not a condition of employment. Message frequency varies. Msg & data rates may apply. Reply HELP for help, STOP to opt out.";
+
+// Box 2 — promotional messages consent (optional, unchecked by default).
+export const PROMOTIONAL_CONSENT_LABEL =
+  "Promotional messages: I agree to receive recurring promotional text messages from LifecycleLoop Live about employee perks and discounts offered by my employer, company events, wellness and recognition programs, and new LifecycleLoop Live features, at the number provided. Consent is not a condition of employment. Up to 4 msgs/month. Msg & data rates may apply. Reply HELP for help, STOP to opt out.";
 
 export const STOP_KEYWORDS = ["STOP", "END", "CANCEL", "UNSUBSCRIBE", "QUIT"];
 
 export const CONSENT_MOBILE_REQUIRED_ERROR =
-  "Please enter your mobile number to receive text updates, or uncheck the box.";
+  "Please enter your mobile number to receive text updates, or uncheck the boxes.";
 
 export const CONSENT_MOBILE_INVALID_ERROR =
-  "Please enter a valid 10-digit mobile number, or uncheck the box.";
+  "Please enter a valid 10-digit mobile number, or uncheck the boxes.";
 
 export const DEFAULT_TITLE = "LifecycleLoop Live: Employee Updates";
 export const DEFAULT_DESCRIPTION =

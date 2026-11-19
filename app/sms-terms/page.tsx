@@ -2,17 +2,18 @@ import type { Metadata } from 'next';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import {
-  BRAND,
   LEGAL_NAME,
   ADDRESS,
   EMAIL,
   PHONE,
   PHONE_DISPLAY,
-  MESSAGE_TYPES,
+  ACCOUNT_MESSAGE_TYPES,
+  PROMOTIONAL_MESSAGE_TYPES,
   SAMPLE_MESSAGES,
   STOP_KEYWORDS,
   PRIVACY_NO_SHARING_CLAUSE,
   TOLL_FREE_NOTE,
+  POSITIONING_PARAGRAPH,
   DEFAULT_DESCRIPTION,
 } from '../lib/brand';
 
@@ -34,15 +35,19 @@ export default function SmsTermsPage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="prose prose-lg max-w-none">
           <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">1. Program Description</h2>
-          <p className="mb-4 text-slate">
-            {BRAND} is an internal employee communication program. Employers use it to send real-time text updates to their own enrolled employees at each stage of the employee lifecycle. Messages go only to current employees of a participating employer who enroll with their company ID. The program is never open to the general public.
-          </p>
+          <p className="mb-4 text-slate">{POSITIONING_PARAGRAPH}</p>
           <p className="mb-6 text-slate">{TOLL_FREE_NOTE}</p>
 
           <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">2. Message Types</h2>
-          <p className="mb-4 text-slate">If you enroll, you may receive texts about:</p>
+          <p className="mb-4 text-slate">If you enroll, you may receive account notification texts about:</p>
           <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
-            {MESSAGE_TYPES.map((type) => (
+            {ACCOUNT_MESSAGE_TYPES.map((type) => (
+              <li key={type.title}><strong className="text-navy">{type.title}</strong> — {type.description}</li>
+            ))}
+          </ul>
+          <p className="mb-4 text-slate">If you also opt in, you may receive optional promotional texts about:</p>
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
+            {PROMOTIONAL_MESSAGE_TYPES.map((type) => (
               <li key={type.title}><strong className="text-navy">{type.title}</strong> — {type.description}</li>
             ))}
           </ul>
