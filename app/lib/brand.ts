@@ -102,13 +102,24 @@ export const MESSAGE_TYPES: MessageType[] = [
   ...PROMOTIONAL_MESSAGE_TYPES,
 ];
 
-export const SAMPLE_MESSAGES: string[] = [
+// Samples 1–4: account notification examples.
+export const ACCOUNT_SAMPLE_MESSAGES: string[] = [
   "LifecycleLoop Live: Welcome aboard! Your next onboarding step is ready at lifecyclelooplive.com/portal. Reply HELP for help, STOP to opt out.",
   "LifecycleLoop Live: Reminder: Safety training is tomorrow 11/20 at 9:00 AM. Details at lifecyclelooplive.com/portal. Reply STOP to opt out.",
   "LifecycleLoop Live: Your shift on Sat 11/22 has changed to 10:00 AM-6:00 PM. View your schedule at lifecyclelooplive.com/portal. Reply STOP to opt out.",
   "LifecycleLoop Live: Your verification code is 482913. Enter it at lifecyclelooplive.com/verify to confirm your number. Reply HELP for help, STOP to opt out.",
-  "LifecycleLoop Live: New employee perk! Your employer now offers a discount at local gyms. View details at lifecyclelooplive.com/portal. Reply STOP to opt out.",
-  "LifecycleLoop Live: You're invited! Join us for the company wellness fair on 12/10. Details at lifecyclelooplive.com/portal. Reply STOP to opt out.",
+];
+
+// Samples 5–6: promotional examples.
+export const PROMOTIONAL_SAMPLE_MESSAGES: string[] = [
+  "LifecycleLoop Live: New employee perk! Your employer now offers discounted gym memberships. See details at lifecyclelooplive.com/portal. Reply STOP to opt out.",
+  "LifecycleLoop Live: Join this month's team wellness challenge and earn recognition points. Sign up at lifecyclelooplive.com/portal. Reply STOP to opt out.",
+];
+
+// Combined list (1–6) — used wherever the site needs every sample together.
+export const SAMPLE_MESSAGES: string[] = [
+  ...ACCOUNT_SAMPLE_MESSAGES,
+  ...PROMOTIONAL_SAMPLE_MESSAGES,
 ];
 
 // Box 1 — account notifications consent (optional, unchecked by default).
@@ -120,6 +131,14 @@ export const PROMOTIONAL_CONSENT_LABEL =
   "Promotional messages: I agree to receive recurring promotional text messages from LifecycleLoop Live about employee perks and discounts offered by my employer, company events, wellness and recognition programs, and new LifecycleLoop Live features, at the number provided. Consent is not a condition of employment. Up to 4 msgs/month. Msg & data rates may apply. Reply HELP for help, STOP to opt out.";
 
 export const STOP_KEYWORDS = ["STOP", "END", "CANCEL", "UNSUBSCRIBE", "QUIT"];
+
+// /sms-terms, section 3 — replaces the old single-sentence frequency line.
+export const FREQUENCY_NOTE =
+  "Account notification frequency varies based on your employer and role. Promotional messages: up to 4 msgs/month.";
+
+// /sms-terms, section 3 — added after the opt-out keywords.
+export const DUAL_OPT_OUT_NOTE =
+  "You can opt in to account notifications, promotional messages, or both. Replying STOP ends all messages from LifecycleLoop Live. To stop only promotional messages, contact support@lifecyclelooplive.com or (302) 208-0355.";
 
 export const CONSENT_MOBILE_REQUIRED_ERROR =
   "Please enter your mobile number to receive text updates, or uncheck the boxes.";

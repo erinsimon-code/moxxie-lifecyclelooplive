@@ -11,7 +11,8 @@ import {
   POSITIONING_PARAGRAPH,
   ACCOUNT_MESSAGE_TYPES,
   PROMOTIONAL_MESSAGE_TYPES,
-  SAMPLE_MESSAGES,
+  ACCOUNT_SAMPLE_MESSAGES,
+  PROMOTIONAL_SAMPLE_MESSAGES,
   PRIVACY_NO_SHARING_CLAUSE,
   DEFAULT_DESCRIPTION,
 } from '../lib/brand';
@@ -78,8 +79,15 @@ export default function PrivacyPage() {
           </ul>
 
           <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">5. Sample Messages</h2>
+          <p className="text-sm font-semibold mb-2 text-navy">Account notification examples</p>
           <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
-            {SAMPLE_MESSAGES.map((message) => (
+            {ACCOUNT_SAMPLE_MESSAGES.map((message) => (
+              <li key={message}>{message}</li>
+            ))}
+          </ul>
+          <p className="text-sm font-semibold mb-2 text-navy">Promotional examples</p>
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
+            {PROMOTIONAL_SAMPLE_MESSAGES.map((message) => (
               <li key={message}>{message}</li>
             ))}
           </ul>

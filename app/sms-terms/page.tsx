@@ -9,11 +9,14 @@ import {
   PHONE_DISPLAY,
   ACCOUNT_MESSAGE_TYPES,
   PROMOTIONAL_MESSAGE_TYPES,
-  SAMPLE_MESSAGES,
+  ACCOUNT_SAMPLE_MESSAGES,
+  PROMOTIONAL_SAMPLE_MESSAGES,
   STOP_KEYWORDS,
   PRIVACY_NO_SHARING_CLAUSE,
   TOLL_FREE_NOTE,
   POSITIONING_PARAGRAPH,
+  FREQUENCY_NOTE,
+  DUAL_OPT_OUT_NOTE,
   DEFAULT_DESCRIPTION,
 } from '../lib/brand';
 
@@ -54,12 +57,13 @@ export default function SmsTermsPage() {
 
           <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">3. Frequency, Charges and Opting Out</h2>
           <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
-            <li>Message frequency varies depending on your employer and your role.</li>
+            <li>{FREQUENCY_NOTE}</li>
             <li>Msg &amp; data rates may apply.</li>
             <li>Reply <strong className="text-navy">HELP</strong> for help, or <strong className="text-navy">STOP</strong> to opt out at any time.</li>
             <li>You may also reply with any of the following to opt out: {STOP_KEYWORDS.join(', ')}.</li>
             <li>Carriers are not liable for delayed or undelivered messages.</li>
           </ul>
+          <p className="mb-6 text-slate">{DUAL_OPT_OUT_NOTE}</p>
 
           <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">4. No Sharing</h2>
           <p className="mb-6 text-slate">
@@ -67,8 +71,15 @@ export default function SmsTermsPage() {
           </p>
 
           <h2 className="text-2xl font-heading font-bold mt-8 mb-4 text-navy">5. Sample Messages</h2>
+          <p className="text-sm font-semibold mb-2 text-navy">Account notification examples</p>
           <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
-            {SAMPLE_MESSAGES.map((message) => (
+            {ACCOUNT_SAMPLE_MESSAGES.map((message) => (
+              <li key={message}>{message}</li>
+            ))}
+          </ul>
+          <p className="text-sm font-semibold mb-2 text-navy">Promotional examples</p>
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
+            {PROMOTIONAL_SAMPLE_MESSAGES.map((message) => (
               <li key={message}>{message}</li>
             ))}
           </ul>

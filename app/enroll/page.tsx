@@ -11,7 +11,8 @@ import {
   PROMOTIONAL_CONSENT_LABEL,
   CONSENT_MOBILE_REQUIRED_ERROR,
   CONSENT_MOBILE_INVALID_ERROR,
-  SAMPLE_MESSAGES,
+  ACCOUNT_SAMPLE_MESSAGES,
+  PROMOTIONAL_SAMPLE_MESSAGES,
 } from '../lib/brand';
 
 // Note: metadata for this route is set in ./layout.tsx since this is a
@@ -242,8 +243,15 @@ export default function EnrollPage() {
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <h2 className="text-2xl font-heading font-bold mb-4 text-navy">Sample Messages</h2>
         <p className="text-sm mb-4 text-slate">Here&apos;s what a text from LifecycleLoop Live might look like:</p>
+        <p className="text-sm font-semibold mb-2 text-navy">Account notification examples</p>
+        <ul className="list-disc pl-6 mb-6 space-y-2 text-slate">
+          {ACCOUNT_SAMPLE_MESSAGES.map((message) => (
+            <li key={message}>{message}</li>
+          ))}
+        </ul>
+        <p className="text-sm font-semibold mb-2 text-navy">Promotional examples</p>
         <ul className="list-disc pl-6 space-y-2 text-slate">
-          {SAMPLE_MESSAGES.map((message) => (
+          {PROMOTIONAL_SAMPLE_MESSAGES.map((message) => (
             <li key={message}>{message}</li>
           ))}
         </ul>
